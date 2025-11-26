@@ -9,8 +9,8 @@ repositories {
     mavenCentral()
 }
 
-group = 'org.java-websocket'
-version = '1.6.1-SNAPSHOT'
+group = 'diktamen'
+version = '1.6.1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -23,10 +23,20 @@ javadoc {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/diktamen/Java-WebSocket")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
     publications {
         maven(MavenPublication) {
-            groupId = project.group
-            artifactId = 'Java-WebSocket'
+            groupId = 'diktamen'
+            artifactId = 'java-websocket'
             version = project.version
 
             from components.java
