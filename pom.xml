@@ -5,7 +5,7 @@
     <groupId>diktamen</groupId>
     <artifactId>java-websocket</artifactId>
     <packaging>jar</packaging>
-    <version>1.6.1.0</version>
+    <version>1.6.1.1</version>
     <name>Java-WebSocket</name>
     <description>A barebones WebSocket client and server implementation written 100% in Java</description>
     <url>https://github.com/TooTallNate/Java-WebSocket</url>
