@@ -1,46 +1,21 @@
 # Publishing Java-WebSocket
 
-This document describes how to publish a new release of the diktamen fork of Java-WebSocket to GitHub Packages.
-
-## Steps to Publish
-
-### 1. Update the version number
-
-The version number must be updated in **two places**:
-
-- `build.gradle` (line 13):
-  ```groovy
-  version = 'X.Y.Z'
-  ```
-
-- `pom.xml` (line 8):
-  ```xml
-  <version>X.Y.Z</version>
-  ```
-
-### 2. Commit and push the version changes
+## Publishing a New Release
 
 ```bash
-git add build.gradle pom.xml
-git commit -m "Bump version to X.Y.Z"
-git push origin master
+./publish.sh <version>
 ```
 
-### 3. Create a GitHub Release
+Example:
+```bash
+./publish.sh 1.6.2.0
+```
 
-1. Go to [Releases](https://github.com/diktamen/Java-WebSocket/releases)
-2. Click **"Draft a new release"**
-3. Create a new tag with the same version number
-4. Set the release title
-5. Click **"Publish release"**
-
-The GitHub Actions workflow will automatically build and publish to GitHub Packages.
+This updates the version in `build.gradle` and `pom.xml`, commits, pushes, and creates a GitHub release which triggers the automated publish workflow.
 
 ## Using the Published Package
 
 ### Maven
-
-Add the GitHub Packages repository and dependency to your `pom.xml`:
 
 ```xml
 <repositories>
@@ -53,7 +28,7 @@ Add the GitHub Packages repository and dependency to your `pom.xml`:
 <dependency>
   <groupId>diktamen</groupId>
   <artifactId>java-websocket</artifactId>
-  <version>1.6.1.0</version>
+  <version>1.6.1.1</version>
 </dependency>
 ```
 
@@ -71,13 +46,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'diktamen:java-websocket:1.6.1.0'
+    implementation 'diktamen:java-websocket:1.6.1.1'
 }
 ```
 
 ### Authentication
 
-GitHub Packages requires authentication. Configure your credentials:
+GitHub Packages requires authentication. Create a GitHub token with `read:packages` scope and configure:
 
 **Maven** (`~/.m2/settings.xml`):
 ```xml
