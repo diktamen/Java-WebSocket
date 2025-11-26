@@ -50,7 +50,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'diktamen'
-            artifactId = 'Java-WebSocket'
+            artifactId = 'java-websocket'
             version = project.version
 
             from components.java
